@@ -1,0 +1,18 @@
+body{
+    background:#0f172a;
+    color:white;
+    font-family:Arial;
+    text-align:center;
+}
+
+.container{
+    margin-top:100px;
+}
+
+a{
+    background:#38bdf8;
+    padding:10px 20px;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+}
