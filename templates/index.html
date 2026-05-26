@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield | Professional Cybersecurity Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f5;
+            color: #1a1a1a;
+            line-height: 1.5;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            color: #1a1a1a;
+        }
+
+        .logo span {
+            font-weight: 400;
+            color: #666;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #1a1a1a;
+            color: #ffffff;
+            border: 1px solid #1a1a1a;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #1a1a1a;
+            border: 1px solid #ccc;
+        }
+
+        .btn-outline:hover {
+            border-color: #1a1a1a;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 5%;
+            background: #fafafa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            color: #1a1a1a;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            padding: 1.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            border-color: #1a1a1a;
+        }
+
+        .feature-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .feature-card p {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: #ffffff;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links a {
+                margin: 0 0.8rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Cyber<span>Shield</span></div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Cybersecurity Protection Suite</h1>
+        <p>Professional tools to protect your digital identity and data</p>
+        <div class="btn-group">
+            <a href="/dashboard" class="btn btn-primary">Launch Dashboard</a>
+            <a href="/register" class="btn btn-outline">Get Started</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">Security Tools</h2>
+        <div class="features-grid">
+            <div class="feature-card" onclick="location.href='/phishing'">
+                <h3>Phishing Detection</h3>
+                <p>Analyze URLs for phishing attempts and suspicious patterns</p>
+            </div>
+            <div class="feature-card" onclick="location.href='/breach'">
+                <h3>Breach Monitoring</h3>
+                <p>Check if your email address has been compromised</p>
+            </div>
+            <div class="feature-card" onclick="location.href='/password'">
+                <h3>Password Analysis</h3>
+                <p>Evaluate password strength with detailed feedback</p>
+            </div>
+            <div class="feature-card" onclick="location.href='/quiz'">
+                <h3>Security Training</h3>
+                <p>Test your knowledge with interactive cybersecurity quiz</p>
+            </div>
+            <div class="feature-card" onclick="location.href='/cipher'">
+                <h3>Encryption Tool</h3>
+                <p>Encrypt and decrypt messages using Caesar cipher</p>
+            </div>
+            <div class="feature-card" onclick="location.href='/leaderboard'">
+                <h3>Competitive Arena</h3>
+                <p>Compete with others and track your ranking</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>CyberShield - Professional Cybersecurity Platform</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const url = this.getAttribute('onclick').match(/'(.*?)'/)[1];
+                window.location.href = url;
+            });
+        });
+    </script>
+</body>
+</html>

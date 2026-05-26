@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Quiz - CyberShield</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f5;
+            color: #1a1a1a;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 2rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem;
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-item {
+            text-align: center;
+        }
+
+        .stats-label {
+            font-size: 0.7rem;
+            color: #888;
+        }
+
+        .stats-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 3px;
+            background: #e0e0e0;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #1a1a1a;
+            width: 0%;
+        }
+
+        .question-text {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .option {
+            margin: 0.75rem 0;
+            padding: 0.75rem;
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            border-color: #1a1a1a;
+        }
+
+        .option input {
+            margin-right: 0.75rem;
+            accent-color: #1a1a1a;
+        }
+
+        .option label {
+            cursor: pointer;
+            flex: 1;
+            font-size: 0.9rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background: #333;
+        }
+
+        .result-box {
+            padding: 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .result-correct {
+            background: #e8f5e9;
+            border: 1px solid #a5d6a7;
+            color: #2e7d32;
+        }
+
+        .result-incorrect {
+            background: #ffebee;
+            border: 1px solid #ef9a9a;
+            color: #c62828;
+        }
+
+        .nav-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .nav-link a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+
+        .nav-link a:hover {
+            color: #1a1a1a;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            .stats {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Security Training Quiz</h2>
+        
+        <div class="stats">
+            <div class="stats-item">
+                <div class="stats-label">Total Score</div>
+                <div class="stats-value">{{ score }} pts</div>
+            </div>
+            <div class="stats-item">
+                <div class="stats-label">Questions Attempted</div>
+                <div class="stats-value">{{ attempted }} / {{ total }}</div>
+            </div>
+            <div class="stats-item">
+                <div class="stats-label">Progress</div>
+                <div class="stats-value">{{ (attempted / total * 100)|round|int }}%</div>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: {{ (attempted / total * 100)|round|int }}%"></div>
+        </div>
+
+        {% if result %}
+        <div class="result-box result-{{ result_type }}">
+            {{ result }}
+        </div>
+        {% endif %}
+
+        <form method="POST">
+            <input type="hidden" name="question_id" value="{{ question.id }}">
+            <input type="hidden" name="correct_answer" value="{{ question.correct_answer }}">
+            
+            <div class="question-text">{{ question.question }}</div>
+            
+            <div class="option">
+                <input type="radio" name="answer" value="{{ question.option_a }}" id="opt_a" required>
+                <label for="opt_a">{{ question.option_a }}</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="answer" value="{{ question.option_b }}" id="opt_b">
+                <label for="opt_b">{{ question.option_b }}</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="answer" value="{{ question.option_c }}" id="opt_c">
+                <label for="opt_c">{{ question.option_c }}</label>
+            </div>
+            
+            <button type="submit">Submit Answer</button>
+        </form>
+
+        <div class="nav-link">
+            <a href="/dashboard">Return to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

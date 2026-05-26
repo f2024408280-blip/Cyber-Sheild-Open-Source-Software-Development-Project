@@ -1,4 +1,5 @@
 body{
+
     background:#0f172a;
     color:white;
     font-family:Arial;
@@ -6,13 +7,33 @@ body{
 }
 
 .container{
+
     margin-top:100px;
 }
 
-a{
-    background:#38bdf8;
+input{
+
+    padding:10px;
+    margin:10px;
+    width:250px;
+}
+
+button{
+
     padding:10px 20px;
+    background:#38bdf8;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
+
+a{
+
+    display:block;
+    margin:10px;
     color:white;
     text-decoration:none;
+    background:#2563eb;
+    padding:10px;
     border-radius:5px;
 }
